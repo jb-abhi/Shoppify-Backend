@@ -1,0 +1,28 @@
+{
+    "restoreTerminals.terminals": [
+    {
+      "splitTerminals": [
+        {
+          "name": "git",
+          "commands": ["", "git branch"]
+        }
+      ]
+    },
+    {
+      "splitTerminals": [
+        {
+          "name": "Server",
+          "commands": ["", "npm start"]
+        }
+      ]
+    },
+    {
+      "splitTerminals": [
+        {
+          "name": "Backend",
+          "commands": ["", ""]
+        }
+      ]
+    },
+  ]
+}
