@@ -1,7 +1,10 @@
 const User = require('../models/User');
-const { verifyToken, verifyTokenAndAuthorization, verifyTokenAndAdmin } = require('./verifyToken');
+const { verifyTokenAndAuthorization, verifyTokenAndAdmin } = require('./verifyToken');
 
 const router = require('express').Router();
+
+
+//UPDATE
 
 router.put("/:id",verifyTokenAndAuthorization, async (req,res)=>{
 
@@ -22,6 +25,8 @@ router.put("/:id",verifyTokenAndAuthorization, async (req,res)=>{
   }
 })
 
+//delete
+
 router.delete("/:id", verifyTokenAndAuthorization, async (req, res) => {
   try {
     await User.findByIdAndDelete(req.params.id);
@@ -30,6 +35,9 @@ router.delete("/:id", verifyTokenAndAuthorization, async (req, res) => {
     res.status(500).json(err);
   }
 });
+
+//get user
+
 
 router.get("/find/:id", verifyTokenAndAdmin, async (req, res) => {
   try {
@@ -40,6 +48,8 @@ router.get("/find/:id", verifyTokenAndAdmin, async (req, res) => {
     res.status(500).json(err);
   }
 });
+
+//get all user
 
 router.get("/", verifyTokenAndAdmin, async (req, res) => {
   const query = req.query.new;
@@ -52,6 +62,9 @@ router.get("/", verifyTokenAndAdmin, async (req, res) => {
     res.status(500).json(err);
   }
 });
+
+
+//user stats
 
 router.get("/stats", verifyTokenAndAdmin, async (req, res) => {
   const date = new Date();
